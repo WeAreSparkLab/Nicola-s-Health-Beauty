@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<!-- Demo site — built as an example for Nicola's Health and Beauty by SparkLab -->
+<!-- TODO before go-live: confirm exact opening hours and final treatment price list with Nicola's -->
+<title>Nicola's Health and Beauty — Beccles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#2F4538;
+    --green-deep:#213329;
+    --brass:#B08D57;
+    --brass-light:#D3B87F;
+    --ivory:#F5F1E6;
+    --ivory-card:#FBF9F2;
+    --wine:#5C2A3A;
+    --ink:#26302A;
+    --ink-soft:#5B665E;
+    --line:#DED4BE;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--ivory);color:var(--ink);
+    font-family:'Public Sans',sans-serif;font-weight:400;
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Prata',serif;font-weight:400;}
+  a{color:inherit;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
+  .label-eyebrow{
+    font-size:0.72rem;text-transform:uppercase;letter-spacing:0.2em;
+    color:var(--wine);font-weight:600;
+  }
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,241,230,0.94);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:1100px;margin:0 auto;padding:20px 32px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .wordmark{font-family:'Prata',serif;font-size:1.3rem;color:var(--green);}
+  .call-btn{
+    background:var(--green);color:var(--ivory);
+    padding:11px 22px;border-radius:2px;text-decoration:none;
+    font-size:0.88rem;font-weight:500;
+  }
+  .call-btn:hover{background:var(--wine);}
+
+  /* hero */
+  .hero{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;
+    max-width:1100px;margin:0 auto;padding:90px 32px 90px;
+  }
+  .hero .label-eyebrow{display:block;margin-bottom:18px;}
+  .hero h1{font-size:2.9rem;line-height:1.14;margin-bottom:22px;color:var(--green);}
+  .hero p{color:var(--ink-soft);max-width:44ch;margin-bottom:32px;font-size:1.05rem;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .btn-primary{
+    background:var(--wine);color:var(--ivory);
+    padding:14px 26px;border-radius:2px;text-decoration:none;font-weight:500;
+  }
+  .btn-primary:hover{background:#471F2C;}
+  .btn-outline{
+    border:1px solid var(--green);color:var(--green);
+    padding:13px 24px;border-radius:2px;text-decoration:none;font-weight:500;
+  }
+
+  /* badge */
+  .badge-wrap{display:flex;justify-content:center;}
+  .badge-wrap svg{width:280px;height:280px;}
+  .badge-ring{fill:none;stroke:var(--brass);stroke-width:1.4;}
+  .badge-text{
+    font-family:'Public Sans',sans-serif;font-size:10.5px;letter-spacing:2px;
+    fill:var(--green);text-transform:uppercase;
+  }
+  .badge-year{font-family:'Prata',serif;font-size:34px;fill:var(--wine);}
+  .badge-sub{font-family:'Public Sans',sans-serif;font-size:11px;fill:var(--ink-soft);letter-spacing:1px;}
+
+  /* label list (treatments) */
+  .treatments{padding:90px 32px;background:var(--green);color:var(--ivory);}
+  .section-head{max-width:1100px;margin:0 auto 48px;text-align:center;}
+  .section-head .label-eyebrow{color:var(--brass-light);margin-bottom:14px;}
+  .section-head h2{font-size:2.2rem;color:var(--ivory);}
+
+  .label-grid{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid rgba(255,255,255,0.18);
+  }
+  .label-col{padding:32px 24px;border-right:1px solid rgba(255,255,255,0.18);}
+  .label-col:last-child{border-right:none;}
+  .label-col h3{
+    font-family:'Public Sans',sans-serif;font-weight:600;font-size:0.82rem;
+    text-transform:uppercase;letter-spacing:0.14em;color:var(--brass-light);
+    margin-bottom:16px;
+  }
+  .label-col ul{list-style:none;}
+  .label-col li{
+    font-size:0.95rem;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.15);
+    color:#DCE3DC;
+  }
+  .label-col li:last-child{border-bottom:none;}
+
+  /* brands strip */
+  .brands{
+    padding:36px 32px;text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .brands .label-eyebrow{color:var(--ink-soft);margin-bottom:12px;display:block;}
+  .brands .names{
+    font-family:'Prata',serif;font-size:1.5rem;color:var(--green);
+    letter-spacing:0.02em;
+  }
+  .brands .names span{color:var(--brass);margin:0 14px;}
+
+  /* reviews */
+  .reviews{padding:90px 32px;}
+  .review-grid{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:28px;
+  }
+  .review-card{
+    background:var(--ivory-card);border:1px solid var(--line);
+    padding:34px;border-radius:2px;position:relative;
+  }
+  .review-card::before{
+    content:"";position:absolute;top:20px;right:24px;
+    width:34px;height:34px;border:1px solid var(--brass);border-radius:50%;
+  }
+  .review-card p.quote{font-family:'Prata',serif;font-size:1.2rem;color:var(--green);margin-bottom:14px;line-height:1.5;max-width:80%;}
+  .review-card p.attrib{font-size:0.85rem;color:var(--ink-soft);}
+
+  /* visit */
+  .visit{background:var(--green-deep);color:var(--ivory);padding:80px 32px;}
+  .visit-inner{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;
+  }
+  .visit-col .label-eyebrow{color:var(--brass-light);margin-bottom:10px;display:block;}
+  .visit-col p{color:#C9D2C7;margin-bottom:4px;}
+  .visit-col a{color:var(--ivory);text-decoration:underline;text-underline-offset:3px;}
+
+  footer a{color:#8FA091;text-decoration:underline;text-underline-offset:3px;}
+  footer a:hover{color:var(--ivory);}
+  footer{
+    background:var(--green-deep);color:#8FA091;
+    padding:24px 32px 30px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    max-width:1100px;margin:0 auto;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:0.8rem;
+  }
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;padding-top:50px;}
+    .hero h1{font-size:2.2rem;}
+    .badge-wrap{order:-1;margin-bottom:10px;}
+    .badge-wrap svg{width:200px;height:200px;}
+    .label-grid{grid-template-columns:1fr 1fr;}
+    .label-col{border-bottom:1px solid rgba(255,255,255,0.18);}
+    .review-grid{grid-template-columns:1fr;}
+    .visit-inner{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="wordmark">Nicola's Health &amp; Beauty</div>
+    <a class="call-btn" href="tel:01502710066">Call 01502 710066</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div>
+    <span class="label-eyebrow">Blyburgate, Beccles</span>
+    <h1>Twenty-three years of keeping Beccles beautiful.</h1>
+    <p>A well-established salon offering a full range of beauty and holistic treatments, from Elemis facials to hot stone massage — using trusted brands, in a calm and welcoming space.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="tel:01502710066">Book by phone</a>
+      <a class="btn-outline" href="#treatments">See treatments</a>
+    </div>
+  </div>
+  <div class="badge-wrap">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle class="badge-ring" cx="100" cy="100" r="94"/>
+      <circle class="badge-ring" cx="100" cy="100" r="86"/>
+      <path id="topCurve" d="M 24 100 A 76 76 0 0 1 176 100" fill="none"/>
+      <path id="botCurve" d="M 176 100 A 76 76 0 0 1 24 100" fill="none"/>
+      <text class="badge-text"><textPath href="#topCurve" startOffset="50%" text-anchor="middle">Nicola's Health &amp; Beauty</textPath></text>
+      <text class="badge-text"><textPath href="#botCurve" startOffset="50%" text-anchor="middle">Beccles · Suffolk</textPath></text>
+      <text class="badge-year" x="100" y="95" text-anchor="middle">Est.</text>
+      <text class="badge-year" x="100" y="128" text-anchor="middle">23yrs</text>
+      <text class="badge-sub" x="100" y="146" text-anchor="middle">& counting</text>
+    </svg>
+  </div>
+</div>
+
+<section class="brands">
+  <span class="label-eyebrow">Stockists of</span>
+  <div class="names">Elemis <span>·</span> BareMinerals</div>
+</section>
+
+<section class="treatments" id="treatments">
+  <div class="section-head">
+    <span class="label-eyebrow">On the treatment list</span>
+    <h2>Something for everyone</h2>
+  </div>
+  <div class="label-grid">
+    <div class="label-col">
+      <h3>Facials</h3>
+      <ul>
+        <li>Elemis signature facial</li>
+        <li>Deep cleanse &amp; hydrate</li>
+        <li>Express facial</li>
+      </ul>
+    </div>
+    <div class="label-col">
+      <h3>Nails</h3>
+      <ul>
+        <li>Manicure</li>
+        <li>Pedicure</li>
+        <li>Gel finish</li>
+      </ul>
+    </div>
+    <div class="label-col">
+      <h3>Massage &amp; Holistic</h3>
+      <ul>
+        <li>Full body massage</li>
+        <li>Hot stone therapy</li>
+        <li>Back, neck &amp; shoulder</li>
+      </ul>
+    </div>
+    <div class="label-col">
+      <h3>Brows &amp; Lashes</h3>
+      <ul>
+        <li>Eyebrow shaping</li>
+        <li>Eyebrow tinting</li>
+        <li>Lash lift</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="section-head">
+    <span class="label-eyebrow">What Beccles says</span>
+    <h2>Familiar faces, kept happy</h2>
+  </div>
+  <div class="review-grid">
+    <div class="review-card">
+      <p class="quote">A relaxing, calm environment — the staff make you feel completely at ease.</p>
+      <p class="attrib">— Long-standing client</p>
+    </div>
+    <div class="review-card">
+      <p class="quote">Great choice of treatments at a fair price, and always lovely and friendly.</p>
+      <p class="attrib">— Visitor to Beccles</p>
+    </div>
+  </div>
+</section>
+
+<section class="visit">
+  <div class="visit-inner">
+    <div class="visit-col">
+      <span class="label-eyebrow">Find us</span>
+      <p>45 Blyburgate</p>
+      <p>Beccles, Suffolk</p>
+      <p>NR34 9TQ</p>
+    </div>
+    <div class="visit-col">
+      <span class="label-eyebrow">Book</span>
+      <p><a href="tel:01502710066">01502 710 066</a></p>
+      <p><!-- TODO: link real Fresha or Instagram booking --><a href="#">Book on Fresha</a></p>
+    </div>
+    <div class="visit-col">
+      <span class="label-eyebrow">Hours</span>
+      <p><!-- TODO: confirm exact opening days/hours -->Call for today's availability</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Nicola's Health and Beauty — Beccles</span>
+  <span>Built by <a href="https://wearesparklab.com/studio" target="_blank" rel="noopener">WeAreSparkLab</a></span>
+</footer>
+
+</body>
+</html>
